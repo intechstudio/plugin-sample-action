@@ -1,0 +1,40 @@
+<style>
+textarea {
+	overflow-y: scroll;
+	height: 100px;
+	resize: none; 
+	color:#000;
+}
+</style>
+<div class="p-4 bg-secondary rounded-lg flex flex-col mb-4">
+  <div class="flex flex-col">
+    <div class="pb-2">Sample plugin console</div>
+    <button
+      id="add_action_button" class="flex items-center justify-center rounded focus:outline-none border-2 border-select bg-select hover:bg-select-saturate-10 hover:border-select-saturate-10 text-white px-2 py-0.5 mr-2">
+      Add action button
+    </button>
+    <button
+      id="remove_action_button" class="flex items-center justify-center rounded focus:outline-none border-2 border-select bg-select hover:bg-select-saturate-10 hover:border-select-saturate-10 text-white px-2 py-0.5 mr-2">
+      Remove action button
+    </button>
+  </div>
+</div>
+<script>
+  {
+    const addActionButton = document.getElementById("add_action_button")
+    const removeActionButton = document.getElementById("remove_action_button")
+	
+    //Create communication channel 
+    const messagePort = createPluginMessagePort("plugin-sample-action")
+	
+    addActionButton.onclick = function(){
+      messagePort.postMessage({type: "add-button"})
+    }
+
+    removeActionButton.onclick = function(){
+		  messagePort.postMessage({type: "remove-button"})
+	  }
+	
+    messagePort.start()
+  }
+</script>

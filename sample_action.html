@@ -1,0 +1,19 @@
+<textarea></textarea>
+<script>
+{   
+    let textArea = document.currentScript.previousElementSibling
+ 
+    function handleConfigUpdate(config){
+        textArea.value = config.script
+    }
+
+    textArea.addEventListener("input", function(){
+        var text = textArea.value
+        const event = new CustomEvent("updateCode", {bubbles: true, detail: {script: String(text)}})
+        textArea.dispatchEvent(event)
+    }, false)
+
+    const event = new CustomEvent("updateConfigHandler", {bubbles: true, detail: {handler: handleConfigUpdate}})
+    textArea.dispatchEvent(event)
+}
+</script>
