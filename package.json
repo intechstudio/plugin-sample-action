@@ -1,7 +1,7 @@
 {
-  "name": "plugin_sample_action",
+  "name": "package_sample_action",
   "version": "1.0.0",
-  "description": "Sample Action Plugin 3",
+  "description": "Sample Action Package 3",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
